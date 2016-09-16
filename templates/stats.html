@@ -65,8 +65,14 @@
                         <img width="32px" height="32px" src='static/icons/{{pokemon.pokemon_id}}.png'>
                     </td>
                     <td><strong>{{pokemon.pokemon_name}}</strong></td>
-                    <td class="col-sm-1">
-                        {% if pokemon.lastseen is not none %}   
+                    <td class="col-sm-1" data-sort-value="
+                        {% if pokemon.lastseen is not none %}
+                            {{ pokemon.lastseen }}
+                        {% else %}
+                            1970-01-01
+                        {%endif %}
+                        ">
+                        {% if pokemon.lastseen is not none %}
                             {{ pokemon.lastseen.strftime('%d %b, %H:%M') }}
                         {% else %}
                             never
